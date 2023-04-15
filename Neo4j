@@ -1,0 +1,38 @@
+// Person nodes
+CREATE (p1:Person {id: 1, name: 'Francis', infected: true})
+CREATE (p2:Person {id: 2, name: 'James', infected: false})
+CREATE (p3:Person {id: 3, name: 'Leah', infected: false})
+CREATE (p4:Person {id: 4, name: 'David', infected: false})
+CREATE (p5:Person {id: 5, name: 'Eva', infected: false})
+
+// Location nodes
+CREATE (l1:Location {id: 1, name: 'Museum'})
+CREATE (l2:Location {id: 2, name: 'National Park'})
+CREATE (l3:Location {id: 3, name: 'Cafe'})
+CREATE (l4:Location {id: 4, name: 'Library'})
+CREATE (l5:Location {id: 5, name: 'Gym'})
+
+// VISITED relationships
+CREATE (p1)-[:VISITED {timestamp: datetime('2023-04-01T10:00:00'), duration: 60}]->(l1)
+CREATE (p2)-[:VISITED {timestamp: datetime('2023-04-01T10:30:00'), duration: 30}]->(l1)
+CREATE (p3)-[:VISITED {timestamp: datetime('2023-04-01T11:00:00'), duration: 45}]->(l2)
+CREATE (p4)-[:VISITED {timestamp: datetime('2023-04-01T11:30:00'), duration: 20}]->(l3)
+CREATE (p5)-[:VISITED {timestamp: datetime('2023-04-01T12:00:00'), duration: 40}]->(l4)
+CREATE (p2)-[:VISITED {timestamp: datetime('2023-04-01T12:30:00'), duration: 25}]->(l5)
+CREATE (p3)-[:VISITED {timestamp: datetime('2023-04-01T13:00:00'), duration: 60}]->(l1)
+CREATE (p1)-[:VISITED {timestamp: datetime('2023-04-01T13:30:00'), duration: 35}]->(l2)
+CREATE (p4)-[:VISITED {timestamp: datetime('2023-04-01T14:00:00'), duration: 50}]->(l4)
+CREATE (p5)-[:VISITED {timestamp: datetime('2023-04-01T14:30:00'), duration: 45}]->(l3)
+
+// Region nodes
+CREATE (r1:Region {id: 1, name: 'Northern California'})
+CREATE (r2:Region {id: 2, name: 'Southern California'})
+CREATE (r3:Region {id: 3, name: 'Central California'})
+CREATE (r4:Region {id: 4, name: 'Bay Area'})
+
+//  Location and Region 
+CREATE (l1)-[:LOCATED_IN]->(r1)
+CREATE (l2)-[:LOCATED_IN]->(r2)
+CREATE (l3)-[:LOCATED_IN]->(r3)
+CREATE (l4)-[:LOCATED_IN]->(r4)
+CREATE (l5)-[:LOCATED_IN]->(r1)
